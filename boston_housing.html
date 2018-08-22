@@ -11890,7 +11890,7 @@ C:\Users\asri60\anaconda3\lib\site-packages\sklearn\learning_curve.py:22: Deprec
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># TODO: Minimum price of the data</span>
@@ -11914,7 +11914,7 @@ C:\Users\asri60\anaconda3\lib\site-packages\sklearn\learning_curve.py:22: Deprec
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Maximum price: $</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">maximum_price</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mean price: $</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">mean_price</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Median price $</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">median_price</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Standard deviation of prices: $</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">std_price</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Standard deviation of prices: $</span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">std_price</span><span class="p">))</span>
 </pre></div>
 
 </div>
@@ -11937,7 +11937,7 @@ Minimum price: $105000.0
 Maximum price: $1024800.0
 Mean price: $105000.0
 Median price $438900.0
-Standard deviation of prices: $165171.13154429474
+Standard deviation of prices: $165171.13
 </pre>
 </div>
 </div>
@@ -12124,6 +12124,7 @@ Standard deviation of prices: $165171.13154429474
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer:</strong> Yes, because R2 score for this model is 0.923 which means 92.3% of the variance in the True Value is predictable from the Prediction. 92.3% is very high percentage so we can call this as successful model.</p>
+<p>We only have five points here, and it may be hard to draw conclusion that is statistically significant. Another point is that whether the model is successful also depends largely on the application. So for some projects 0.923 is sufficient, whereas for others it could be a low score</p>
 
 </div>
 </div>
@@ -12204,6 +12205,7 @@ Standard deviation of prices: $165171.13154429474
 <p>We can train and test on the same data. But, maximizing training accuracy rewards overly complex models that overfit the training data. As we add more features, we can slowly reach a 100% accuracy but you are not able to generalize well.</p>
 <p>When dataset is splited into two pieces so that the model can be trained and tested on different data.
 Then, testing accuracy is a better estimate than training accuracy of out-of-sample performance.</p>
+<p>But then, the split might create a problem too. If we have a very limited dataset, then even if we take out a small sample of it as testing data, then also , we are losing a portion of the data. So there's an inherent trade off here which might cause underfitting due to limited datasets. This is where we can take advantage of K-fold cross validation where we divide all the datapoints into k number of bins and then run k separate learning experiments. In each of those, we pick one of those k subsets as our testing set and the remaining k-1 bins as our training sets. This is how we can maximize the machine's learning experiment</p>
 
 </div>
 </div>
@@ -12416,6 +12418,7 @@ Think about the pros and cons of adding more training points based on if the tra
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer: </strong></p>
 <p>The Grid search technique allows us to define a grid of the hyperparameters for a specific classifier and then the Grid search technique exhaustively tries out every possible combinations of the hyperparameters values in order to find the best model. After that we can use cross validation techniques like K-fold cross validation or Stratified Shuffle Split to find the highest accuracy by using the hyperparameters suggested by Grid Search technique optimizing the learning algorithm.</p>
+<p>Example: Grid is commenly used to identify good model complexities and in fact, we applied it above in the task about the complexity curve. In that task, we did not know which value of max_depth is best for the decision tree applied to the Boston housing dataset. We defined a grid over the max_depth values [1, 2, ..., 10] and evaluated decision tree performance for each value from 1 to 10. This allowed us to estimate the relationship between max_depth and the scores. We used our knowledge of this relationship to choose a good value for max_depth by looking for a max_depth value for which increasing it does not improve the scores significantly anymore</p>
 
 </div>
 </div>
